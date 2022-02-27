@@ -35,7 +35,7 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
     },
-    event: {
+    event_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         timestamps: false,
