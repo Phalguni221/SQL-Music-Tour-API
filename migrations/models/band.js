@@ -1,77 +1,78 @@
-Band.init({
+module.exports = {
+    up: async (queryInterface, Sequelize) => {
+      await queryInterface.createTable('bands', {
     band_id: {
-      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
-      autoIncrement: true
+      type: Sequelize.INTEGER,
     },
     name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
         },
     genre: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     available_start_time: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     end_time: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     event: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     stage: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
-        autoIncrement: true
-        
+        autoIncrement: true  
     },
     stage_event: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     set_time: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
     meet_greet: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     }
-
-  }, {
-    sequelize,
-    modelName: 'Band',
-    tableName: 'bands',
-    timestamps: false
-  })
+      })
+},
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.dropTable('bands')
+      }
+}
