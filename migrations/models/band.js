@@ -42,28 +42,28 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
     },
-    stage: {
+    stage_id: {
         type: Sequelize.TEXT,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true  
     },
-    stage_event: {
+    stage_events_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
-    set_time: {
+    set_time_id: {
         type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
         primaryKey: true,
         autoIncrement: true
     },
-    meet_greet: {
+    meet_greet_id: {
         type: Sequelize.DATE,
         allowNull: false,
         timestamps: false,
