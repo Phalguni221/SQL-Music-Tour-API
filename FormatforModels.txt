@@ -1,0 +1,1 @@
+sequelize model:generate --name stage --attributes "stage_name:string" --force true
