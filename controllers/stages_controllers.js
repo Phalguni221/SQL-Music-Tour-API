@@ -1,5 +1,5 @@
 // DEPENDENCIES
-const Stages = require('express').Router()
+const stages = require('express').Router()
 const db = require('../models')
 const {Stage} = db 
 const { Op } = require('sequelize')
@@ -8,7 +8,7 @@ const { Op } = require('sequelize')
 // FIND ALL StagesS
 Stages.get('/', async (req, res) => {
     try {
-        const foundStages = await Stages.findAll({
+        const foundStages = await stages.findAll({
             order: [ [ 'available_start_time', 'ASC' ], ['stage_id', '30'], ],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%`},
@@ -24,9 +24,9 @@ Stages.get('/', async (req, res) => {
 })
 
 // CREATE A Stages
-Stages.post('/', async (req, res) => {
+stages.post('/', async (req, res) => {
     try {
-        const newStages = await Stages.create(req.body)
+        const newStages = await stages.create(req.body)
         res.status(200).json({
             message: 'Successfully inserted a new Stages',
             data: newStages
@@ -37,15 +37,15 @@ Stages.post('/', async (req, res) => {
 })
 
 // UPDATE A Stages
-Stages.put('/:id', async (req, res) => {
+stages.put('/:id', async (req, res) => {
     try {
-        const updateStages = await Stages.update(req.body, {
+        const updatedstages = await stages.update(req.body, {
             where: {
                 stage_id: req.params.id
             }
         })
         res.status(200).json({
-            message: `Successfully updated ${updatedStages} Stages(s)`
+            message: `Successfully updated ${updatedstages} Stages(s)`
         })
     } catch(err) {
         res.status(500).json(err)
@@ -53,15 +53,15 @@ Stages.put('/:id', async (req, res) => {
 })
 
 // DELETE A Stages
-Stages.delete('/:id', async (req, res) => {
+stages.delete('/:id', async (req, res) => {
     try {
-        const deletedStagess = await Stages.destroy({
+        const deletedstages = await stages.destroy({
             where: {
                 stage_id: req.params.id
             }
         })
         res.status(200).json({
-            message: `Successfully deleted ${deletedStagess} Stage(s)`
+            message: `Successfully deleted ${deletedstages} Stage(s)`
         })
     } catch(err) {
         res.status(500).json(err)
