@@ -41,7 +41,7 @@ Stages.put('/:id', async (req, res) => {
     try {
         const updateStages = await Stages.update(req.body, {
             where: {
-                Stages_id: req.params.id
+                stage_id: req.params.id
             }
         })
         res.status(200).json({
@@ -57,7 +57,7 @@ Stages.delete('/:id', async (req, res) => {
     try {
         const deletedStagess = await Stages.destroy({
             where: {
-                Stages_id: req.params.id
+                stage_id: req.params.id
             }
         })
         res.status(200).json({
@@ -68,4 +68,4 @@ Stages.delete('/:id', async (req, res) => {
     }
 })
 // EXPORT
-module.exports = Stages
+module.exports = stages;
