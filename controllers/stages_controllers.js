@@ -6,9 +6,9 @@ const { Op } = require('sequelize')
 
    
 // FIND ALL StagesS
-Stages.get('/', async (req, res) => {
+stages.get('/', async (req, res) => {
     try {
-        const foundStages = await stages.findAll({
+        const foundstages = await stages.findAll({
             order: [ [ 'available_start_time', 'ASC' ], ['stage_id', '30'], ],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%`},
@@ -17,7 +17,7 @@ Stages.get('/', async (req, res) => {
                  }
             }
         })
-        res.status(200).json(foundStages)
+        res.status(200).json(foundstages)
     } catch (error) {
         res.status(500).json(error)
     }
