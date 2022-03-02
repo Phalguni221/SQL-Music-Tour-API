@@ -5,7 +5,7 @@ const {Stage} = db
 const { Op } = require('sequelize')
 
    
-// FIND ALL StagesS
+// FIND ALL STAGES
 stages.get('/', async (req, res) => {
     try {
         const foundstages = await stages.findAll({
