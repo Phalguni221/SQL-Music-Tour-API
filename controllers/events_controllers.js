@@ -5,7 +5,7 @@ const {Event} = db
 const { Op } = require('sequelize')
 
    
-// FIND ALfoundEvents 
+// FIND ALL EVENTS
 events.get('/', async (req, res) => {
     try {
         const foundEvents = await Event.findAll({
@@ -23,7 +23,18 @@ events.get('/', async (req, res) => {
     }
 })
 
-// CREATE A EVENT
+// FIND A SPECIFIC EVENT
+events.get('/:id', async (req, res) => {
+    try {
+        const foundEvent = await Event.findOne({
+            where: { event_id: req.params.id }
+        })
+        res.status(200).json(foundEvent)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+// CREATE AN EVENT
 events.post('/', async (req, res) => {
     try {
         const newEVENT= await Event.create(req.body)
@@ -36,7 +47,7 @@ events.post('/', async (req, res) => {
     }
 })
 
-// UPDATE A EVENT
+// UPDATE AN EVENT
 events.put('/:id', async (req, res) => {
     try {
         const updatfoundEvents = await Event.update(req.body, {

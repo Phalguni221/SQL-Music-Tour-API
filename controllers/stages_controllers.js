@@ -23,7 +23,18 @@ stages.get('/', async (req, res) => {
     }
 })
 
-// CREATE A Stages
+// FIND A SPECIFIC STAGE
+stages.get('/:id', async (req, res) => {
+    try {
+        const foundStage = await Stage.findOne({
+            where: { stage_id: req.params.id }
+        })
+        res.status(200).json(foundStage)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+// CREATE A STAGE
 stages.post('/', async (req, res) => {
     try {
         const newStages = await stages.create(req.body)
@@ -36,7 +47,7 @@ stages.post('/', async (req, res) => {
     }
 })
 
-// UPDATE A Stages
+// UPDATE A STAGE
 stages.put('/:id', async (req, res) => {
     try {
         const updatedstages = await stages.update(req.body, {
@@ -52,7 +63,7 @@ stages.put('/:id', async (req, res) => {
     }
 })
 
-// DELETE A Stages
+// DELETE A STAGE
 stages.delete('/:id', async (req, res) => {
     try {
         const deletedstages = await stages.destroy({
