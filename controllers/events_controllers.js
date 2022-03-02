@@ -9,7 +9,7 @@ const { Op } = require('sequelize')
 events.get('/', async (req, res) => {
     try {
         const foundEvents = await Event.findAll({
-            order: [ [ 'date', 'ASC' ], ['id', '30'] ],
+            order: [ [ 'date', 'ASC' ], ['event_id', '30'] ],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` },
                 id: {
@@ -41,7 +41,7 @@ events.put('/:id', async (req, res) => {
     try {
         const updatfoundEvents = await Event.update(req.body, {
             where: {
-                Event_id: req.params.id
+                event_id: req.params.id
             }
         })
         res.status(200).json({
@@ -68,4 +68,4 @@ events.delete('/:id', async (req, res) => {
     }
 })
 // EXPORT
-module.exports = events
+module.exports = events;
