@@ -9,9 +9,12 @@ const { Op } = require('sequelize')
 events.get('/', async (req, res) => {
     try {
         const foundEvents = await Event.findAll({
-            order: [ [ 'date', 'ASC' ] ],
+            order: [ [ 'date', 'ASC' ], ['id', '30'] ],
             where: {
-                name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
+                name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` },
+                id: {
+                    [Op.lt]: 30                 
+                 }
             }
         })
         res.status(200).json(foundEvents)
